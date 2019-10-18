@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Services\master.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Services\master.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gumbo.Net" Version="1.0.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
+    <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>..\Containers\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\haus\.nuget\packages\gumbo.net\1.0.0\contentFiles\any\netstandard2.0\x64\gumbo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="C:\Users\haus\.nuget\packages\gumbo.net\1.0.0\contentFiles\any\netstandard2.0\x86\gumbo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

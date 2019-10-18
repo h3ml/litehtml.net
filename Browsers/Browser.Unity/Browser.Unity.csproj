@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net471</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="console\console.html" />
+    <EmbeddedResource Include="toolbar\addr-center.png" />
+    <EmbeddedResource Include="toolbar\addr-left.png" />
+    <EmbeddedResource Include="toolbar\addr-right.png" />
+    <EmbeddedResource Include="toolbar\back-active.png" />
+    <EmbeddedResource Include="toolbar\back-disabled.png" />
+    <EmbeddedResource Include="toolbar\back-hover.png" />
+    <EmbeddedResource Include="toolbar\back-normal.png" />
+    <EmbeddedResource Include="toolbar\buttons.png" />
+    <EmbeddedResource Include="toolbar\forward-active.png" />
+    <EmbeddedResource Include="toolbar\forward-disabled.png" />
+    <EmbeddedResource Include="toolbar\forward-hover.png" />
+    <EmbeddedResource Include="toolbar\forward-normal.png" />
+    <EmbeddedResource Include="toolbar\home-active.png" />
+    <EmbeddedResource Include="toolbar\home-hover.png" />
+    <EmbeddedResource Include="toolbar\home-normal.png" />
+    <EmbeddedResource Include="toolbar\reload-active.png" />
+    <EmbeddedResource Include="toolbar\reload-hover.png" />
+    <EmbeddedResource Include="toolbar\reload-normal.png" />
+    <EmbeddedResource Include="toolbar\settings-active.png" />
+    <EmbeddedResource Include="toolbar\settings-hover.png" />
+    <EmbeddedResource Include="toolbar\settings-normal.png" />
+    <EmbeddedResource Include="toolbar\toolbar-bg.png" />
+    <EmbeddedResource Include="toolbar\toolbar.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Containers\Litehtml.Container.Unity\Litehtml.Container.Unity.csproj" />
+    <ProjectReference Include="..\..\Litehtml\Litehtml.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\Containers\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\Containers\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

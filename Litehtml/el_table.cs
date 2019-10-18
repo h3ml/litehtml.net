@@ -1,0 +1,82 @@
+namespace Litehtml
+{
+    public struct col_info
+    {
+        public int width;
+        public bool is_auto;
+    }
+
+    public class el_table : html_tag
+    {
+        public el_table(document doc) : base(doc)
+        {
+            _border_spacing_x = 0;
+            _border_spacing_y = 0;
+            _border_spacing_z = 0; //:h3ml
+            _border_collapse = border_collapse.separate;
+        }
+
+        public override bool appendChild(element el)
+        {
+            if (el == null) return false;
+            var tagName = el.get_tagName();
+            return tagName == "tbody" || tagName == "thead" || tagName == "tfoot" ? base.appendChild(el) : false;
+        }
+
+        public override void parse_styles(bool is_reparse = false)
+        {
+            base.parse_styles(is_reparse);
+
+            _border_collapse = (border_collapse)html.value_index(get_style_property("border-collapse", true, "separate"), types.border_collapse_strings, (int)border_collapse.separate);
+
+            if (_border_collapse == border_collapse.separate)
+            {
+                _css_border_spacing_x.fromString(get_style_property("-litehtml-border-spacing-x", true, "0px"));
+                _css_border_spacing_y.fromString(get_style_property("-litehtml-border-spacing-y", true, "0px"));
+                _css_border_spacing_z.fromString(get_style_property("-litehtml-border-spacing-z", true, "0px")); //:h3ml
+
+                var fntsz = get_font_size;
+                var doc = get_document();
+                _border_spacing_x = doc.cvt_units(_css_border_spacing_x, fntsz);
+                _border_spacing_y = doc.cvt_units(_css_border_spacing_y, fntsz);
+                _border_spacing_z = doc.cvt_units(_css_border_spacing_z, fntsz); //:h3ml
+            }
+            else
+            {
+                _border_spacing_x = 0;
+                _border_spacing_y = 0;
+                _border_spacing_z = 0; //:h3ml
+                _padding.bottom = 0;
+                _padding.top = 0;
+                _padding.left = 0;
+                _padding.right = 0;
+                _padding.front = 0; //:h3ml
+                _padding.back = 0; //:h3ml
+                _css_padding.bottom.set_value(0, css_units.px);
+                _css_padding.top.set_value(0, css_units.px);
+                _css_padding.left.set_value(0, css_units.px);
+                _css_padding.right.set_value(0, css_units.px);
+                _css_padding.front.set_value(0, css_units.px); //:h3ml
+                _css_padding.back.set_value(0, css_units.px); //:h3ml
+            }
+        }
+
+        public override void parse_attributes()
+        {
+            var str = get_attr("width"); if (str != null) _style.add_property("width", str, null, false);
+            str = get_attr("align"); if (str != null)
+            {
+                var align = html.value_index(str, "left;center;right");
+                switch (align)
+                {
+                    case 1: _style.add_property("margin-left", "auto", null, false); _style.add_property("margin-right", "auto", null, false); break;
+                    case 2: _style.add_property("margin-left", "auto", null, false); _style.add_property("margin-right", "0", null, false); break;
+                }
+            }
+            str = get_attr("cellspacing"); if (str != null) _style.add_property("border-spacing", $"{str} {str}", null, false);
+            str = get_attr("border"); if (str != null) _style.add_property("border-width", str, null, false);
+            str = get_attr("bgcolor"); if (str != null) _style.add_property("background-color", str, null, false);
+            base.parse_attributes();
+        }
+    }
+}
