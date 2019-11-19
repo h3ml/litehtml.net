@@ -1,5 +1,4 @@
 using Gumbo;
-using Litehtml.Script;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,11 +38,11 @@ namespace Litehtml
         public string followed_tags;
     }
 
-    public partial class document
+    public partial class document : NodeList, Document
     {
         element _root;
         Icontainer _container;
-        Iscript _script;
+        script_engine _script;
         Dictionary<string, font_item> _fonts = new Dictionary<string, font_item>();
         List<css_text> _css = new List<css_text>();
         css _styles = new css();
@@ -58,7 +57,7 @@ namespace Litehtml
         string _lang;
         string _culture;
 
-        public document(Icontainer container, Iscript script, context ctx)
+        public document(Icontainer container, script_engine script, context ctx)
         {
             _container = container;
             _script = script;
@@ -74,7 +73,7 @@ namespace Litehtml
         }
 
         public Icontainer container => _container;
-        public Iscript script => _script;
+        public script_engine script => _script;
 
         public object get_font(string name, int size, string weight, string style, string decoration, out font_metrics fm)
         {
@@ -325,8 +324,8 @@ namespace Litehtml
 
         public element get_over_element => _over_element;
 
-        public static document createFromString(string str, Icontainer container, Iscript script, context ctx, css user_styles = null) => createFromUTF8(Encoding.UTF8.GetString(Encoding.Default.GetBytes(str)), container, script, ctx, user_styles);
-        public static document createFromUTF8(string str, Icontainer container, Iscript script, context ctx, css user_styles = null)
+        public static document createFromString(string str, Icontainer container, script_engine script, context ctx, css user_styles = null) => createFromUTF8(Encoding.UTF8.GetString(Encoding.Default.GetBytes(str)), container, script, ctx, user_styles);
+        public static document createFromUTF8(string str, Icontainer container, script_engine script, context ctx, css user_styles = null)
         {
             var doc = new document(container, script, ctx); // Create litehtml::document
             var root_elements = new List<element>();
@@ -400,11 +399,11 @@ namespace Litehtml
             return ret;
         }
 
-        void create_node(Node node, List<element> elements, bool parseTextNode)
+        void create_node(Gumbo.Node node, List<element> elements, bool parseTextNode)
         {
             switch (node)
             {
-                case Element elementNode when node.Type == GumboNodeType.GUMBO_NODE_ELEMENT:
+                case Gumbo.Element elementNode when node.Type == GumboNodeType.GUMBO_NODE_ELEMENT:
                     {
                         var attrs = new Dictionary<string, string>();
                         foreach (var attr in elementNode.Attributes)

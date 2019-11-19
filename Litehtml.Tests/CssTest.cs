@@ -2,7 +2,7 @@
 
 namespace Litehtml
 {
-    public class CssTest
+    public class cssTest
     {
         [Test]
         public void CssParseTest()

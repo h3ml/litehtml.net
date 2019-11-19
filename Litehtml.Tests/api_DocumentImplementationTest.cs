@@ -1,9 +1,9 @@
-﻿using Litehtml.Services;
+using Litehtml.Services;
 using NUnit.Framework;
 
 namespace Litehtml
 {
-    public class contextTest
+    public class api_DocumentImplementationTest
     {
         [Test]
         public void Test()

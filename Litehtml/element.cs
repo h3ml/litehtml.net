@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Litehtml
 {
-    public partial class element : node
+    public partial class element : EventTarget, Element
     {
         protected internal element _parent;
         //protected internal document _doc;

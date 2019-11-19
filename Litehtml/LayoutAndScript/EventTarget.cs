@@ -1,11 +1,10 @@
-using Litehtml.Events;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
 namespace Litehtml
 {
-    public class EventTarget
+    public class EventTarget : node
     {
         readonly Dictionary<string, List<EventEntry>> _eventEntries = new Dictionary<string, List<EventEntry>>();
 

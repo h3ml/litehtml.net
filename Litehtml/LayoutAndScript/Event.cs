@@ -1,4 +1,4 @@
-namespace Litehtml.Events
+namespace Litehtml
 {
     partial class Event
     {
@@ -8,12 +8,10 @@ namespace Litehtml.Events
 
         public void resetBeforeDispatch()
         {
-
         }
 
         public void resetAfterDispatch()
         {
-
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Litehtml;
 using Litehtml.Containers;
-using Litehtml.Script;
 using Litehtml.Services;
 using System;
 using System.Collections.Generic;
@@ -107,7 +106,7 @@ namespace Browser.Windows
             var html_text = load_utf8_file(file, true);
             if (html_text == null)
                 html_text = "<h1>Something Wrong</h1>";
-            _doc = document.createFromUTF8(html_text, this, new EmptyScriptEngine((HtmlControl)Parent), ((HtmlControl)Parent).get_html_context());
+            _doc = document.createFromUTF8(html_text, this, new DefaultScriptEngine((HtmlControl)Parent), ((HtmlControl)Parent).get_html_context());
             ((HtmlControl)Parent).OnPageReady();
         }
 

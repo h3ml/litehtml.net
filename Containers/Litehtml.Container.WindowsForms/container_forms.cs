@@ -334,7 +334,7 @@ namespace Litehtml.Containers
             media.type = media_type.screen;
             media.width = client.width;
             media.height = client.height;
-            var screen = Screen.FromControl(this);
+            var screen = System.Windows.Forms.Screen.FromControl(this);
             var screenBounds = screen.Bounds;
             media.device_width = screenBounds.Width;
             media.device_height = screenBounds.Height;

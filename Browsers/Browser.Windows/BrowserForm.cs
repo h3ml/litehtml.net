@@ -1,29 +1,28 @@
 ﻿using Litehtml;
-using Litehtml.Script;
 using Litehtml.Services;
 using System;
 using System.Windows.Forms;
 
 namespace Browser.Windows
 {
-    public partial class BrowserForm : Form, INavigator
+    public partial class BrowserForm : Form, Navigator
     {
         readonly context _context;
         bool _consoleOpen;
 
         #region Navigator
 
-        string INavigator.appCodeName => "BrowserForm";
-        string INavigator.appName => "BrowserForm";
-        string INavigator.appVersion => "1.0";
-        bool INavigator.cookieEnabled => false;
-        Geolocation INavigator.geolocation => throw new NotImplementedException();
-        string INavigator.language => "en";
-        bool INavigator.onLine => true;
-        string INavigator.platform => "platform";
-        string INavigator.product => "product";
-        string INavigator.userAgent => WebpageControl.USERAGENT;
-        bool INavigator.javaEnabled() => false;
+        string Navigator.appCodeName => "BrowserForm";
+        string Navigator.appName => "BrowserForm";
+        string Navigator.appVersion => "1.0";
+        bool Navigator.cookieEnabled => false;
+        Geolocation Navigator.geolocation => throw new NotImplementedException();
+        string Navigator.language => "en";
+        bool Navigator.onLine => true;
+        string Navigator.platform => "platform";
+        string Navigator.product => "product";
+        string Navigator.userAgent => WebpageControl.USERAGENT;
+        bool Navigator.javaEnabled() => false;
 
         #endregion
 

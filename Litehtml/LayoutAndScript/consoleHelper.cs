@@ -1,77 +1,76 @@
-using Litehtml.Script;
 using System;
 using System.Diagnostics;
 
 namespace Litehtml
 {
-    class consoleHelper : IConsole
+    class consoleHelper : Console
     {
-        void IConsole.assert(object expression, object message)
+        void Console.assert(object expression, object message)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.clear()
+        void Console.clear()
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.count(string label)
+        void Console.count(string label)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.error(object message)
+        void Console.error(object message)
         {
             Debug.WriteLine(message);
         }
 
-        void IConsole.group(string label)
+        void Console.group(string label)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.groupCollapsed(string label)
+        void Console.groupCollapsed(string label)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.groupEnd()
+        void Console.groupEnd()
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.info(object message)
+        void Console.info(object message)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.log(object message)
+        void Console.log(object message)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.table(object tabledata, object[] tablecolumns)
+        void Console.table(object tabledata, object[] tablecolumns)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.time(string label)
+        void Console.time(string label)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.timeEnd(string label)
+        void Console.timeEnd(string label)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.trace(string label)
+        void Console.trace(string label)
         {
             throw new NotImplementedException();
         }
 
-        void IConsole.warn(object message)
+        void Console.warn(object message)
         {
             throw new NotImplementedException();
         }

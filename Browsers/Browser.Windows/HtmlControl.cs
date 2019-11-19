@@ -1,13 +1,14 @@
 ﻿using Litehtml;
-using Litehtml.Script;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Console = Litehtml.Console;
+using Screen = Litehtml.Screen;
 
 namespace Browser.Windows
 {
-    public partial class HtmlControl : UserControl, IHistory, IWindow
+    public partial class HtmlControl : UserControl, History, Window
     {
         //int _max_top;
         //int _max_left;
@@ -19,10 +20,10 @@ namespace Browser.Windows
 
         #region History
 
-        int IHistory.length => _history.length;
-        void IHistory.back() => back();
-        void IHistory.forward() => forward();
-        void IHistory.go(int numberURL) => open(_history[numberURL]);
+        int History.length => _history.length;
+        void History.back() => back();
+        void History.forward() => forward();
+        void History.go(int numberURL) => open(_history[numberURL]);
 
         #endregion
 
@@ -30,62 +31,62 @@ namespace Browser.Windows
 
         readonly windowHelper _windowHelper = new windowHelper();
 
-        bool IWindow.closed => ParentForm.Visible;
-        IConsole IWindow.console => _windowHelper.console;
-        string IWindow.defaultStatus { get => _defaultStatus; set => _defaultStatus = value; }
-        IDocument IWindow.document => throw new NotImplementedException();
-        IElement IWindow.frameElement => _windowHelper.frameElement;
-        IList<IElement> IWindow.frames => _windowHelper.frames;
-        IHistory IWindow.history => this;
-        int IWindow.innerHeight => _page?.Width ?? 0;
-        int IWindow.innerWidth => _page?.Height ?? 0;
-        int IWindow.length => 0;
-        IStorage IWindow.localStorage => throw new NotImplementedException();
-        ILocation IWindow.location => throw new NotImplementedException();
-        string IWindow.name { get => ParentForm.Name; set => ParentForm.Name = value; }
-        INavigator IWindow.navigator => (INavigator)ParentForm;
-        IWindow IWindow.opener => this;
-        int IWindow.outerHeight => Height;
-        int IWindow.outerWidth => Width;
-        int IWindow.pageXOffset => throw new NotImplementedException();
-        int IWindow.pageYOffset => throw new NotImplementedException();
-        IWindow IWindow.parent => null;
-        IScreen IWindow.screen => throw new NotImplementedException();
-        int IWindow.screenLeft => ParentForm.Left;
-        int IWindow.screenTop => ParentForm.Top;
-        int IWindow.screenX => ParentForm.Left;
-        int IWindow.screenY => ParentForm.Top;
-        IStorage IWindow.sessionStorage => throw new NotImplementedException();
-        int IWindow.scrollX => HorizontalScroll.Value;
-        int IWindow.scrollY => VerticalScroll.Value;
-        IWindow IWindow.self => this;
-        string IWindow.status { get => ParentForm.Text; set => ParentForm.Text = value; }
-        IWindow IWindow.top => this;
-        void IWindow.alert(string message) => MessageBox.Show(message);
-        string IWindow.atob(string encodedStr) => _windowHelper.atob(encodedStr);
-        void IWindow.blur() => ActiveControl = null;
-        string IWindow.btoa(string str) => _windowHelper.btoa(str);
-        void IWindow.clearInterval(string var) => _windowHelper.clearInterval(var);
-        void IWindow.clearTimeout(string id_of_settimeout) => _windowHelper.clearTimeout(id_of_settimeout);
-        void IWindow.close() => ParentForm.Close();
-        bool IWindow.confirm(string message) => MessageBox.Show(message) == DialogResult.OK;
-        void IWindow.focus() => Focus();
-        IStyle IWindow.getComputedStyle(string element, string pseudoElement) => _windowHelper.getComputedStyle(element, pseudoElement);
-        object IWindow.getSelection() => _windowHelper.getSelection();
-        MediaQueryList IWindow.matchMedia(string mediaQueryString) => _windowHelper.matchMedia(mediaQueryString);
-        void IWindow.moveBy(int x, int y) { ParentForm.Left += x; ParentForm.Top += y; }
-        void IWindow.moveTo(int x, int y) { ParentForm.Left = x; ParentForm.Top = y; }
-        IWindow IWindow.open(string URL, string name, string specs, bool? replace) { open(URL); return this; }
-        void IWindow.print() => throw new NotImplementedException();
-        string IWindow.prompt(string text, string defaultText) => throw new NotImplementedException();
-        object IWindow.requestAnimationFrame() => throw new NotImplementedException();
-        void IWindow.resizeBy(int width, int height) { ParentForm.Width += width; ParentForm.Height += height; }
-        void IWindow.resizeTo(int width, int height) { ParentForm.Width = width; ParentForm.Height = height; }
-        void IWindow.scrollBy(int xnum, int ynum) { HorizontalScroll.Value += xnum; VerticalScroll.Value += xnum; }
-        void IWindow.scrollTo(int xpos, int ypos) { HorizontalScroll.Value = xpos; VerticalScroll.Value = ypos; }
-        int IWindow.setInterval(string function, int milliseconds, params object[] args) => _windowHelper.setInterval(function, milliseconds, args);
-        int IWindow.setTimeout(string function, int milliseconds, params object[] args) => _windowHelper.setTimeout(function, milliseconds, args);
-        void IWindow.stop() => stop();
+        bool Window.closed => ParentForm.Visible;
+        Console Window.console => _windowHelper.console;
+        string Window.defaultStatus { get => _defaultStatus; set => _defaultStatus = value; }
+        Document Window.document => throw new NotImplementedException();
+        Element Window.frameElement => _windowHelper.frameElement;
+        IList<Element> Window.frames => _windowHelper.frames;
+        History Window.history => this;
+        int Window.innerHeight => _page?.Width ?? 0;
+        int Window.innerWidth => _page?.Height ?? 0;
+        int Window.length => 0;
+        Storage Window.localStorage => throw new NotImplementedException();
+        Location Window.location => throw new NotImplementedException();
+        string Window.name { get => ParentForm.Name; set => ParentForm.Name = value; }
+        Navigator Window.navigator => (Navigator)ParentForm;
+        Window Window.opener => this;
+        int Window.outerHeight => Height;
+        int Window.outerWidth => Width;
+        int Window.pageXOffset => throw new NotImplementedException();
+        int Window.pageYOffset => throw new NotImplementedException();
+        Window Window.parent => null;
+        Screen Window.screen => throw new NotImplementedException();
+        int Window.screenLeft => ParentForm.Left;
+        int Window.screenTop => ParentForm.Top;
+        int Window.screenX => ParentForm.Left;
+        int Window.screenY => ParentForm.Top;
+        Storage Window.sessionStorage => throw new NotImplementedException();
+        int Window.scrollX => HorizontalScroll.Value;
+        int Window.scrollY => VerticalScroll.Value;
+        Window Window.self => this;
+        string Window.status { get => ParentForm.Text; set => ParentForm.Text = value; }
+        Window Window.top => this;
+        void Window.alert(string message) => MessageBox.Show(message);
+        string Window.atob(string encodedStr) => _windowHelper.atob(encodedStr);
+        void Window.blur() => ActiveControl = null;
+        string Window.btoa(string str) => _windowHelper.btoa(str);
+        void Window.clearInterval(string var) => _windowHelper.clearInterval(var);
+        void Window.clearTimeout(string id_of_settimeout) => _windowHelper.clearTimeout(id_of_settimeout);
+        void Window.close() => ParentForm.Close();
+        bool Window.confirm(string message) => MessageBox.Show(message) == DialogResult.OK;
+        void Window.focus() => Focus();
+        Style Window.getComputedStyle(string element, string pseudoElement) => _windowHelper.getComputedStyle(element, pseudoElement);
+        object Window.getSelection() => _windowHelper.getSelection();
+        MediaQueryList Window.matchMedia(string mediaQueryString) => _windowHelper.matchMedia(mediaQueryString);
+        void Window.moveBy(int x, int y) { ParentForm.Left += x; ParentForm.Top += y; }
+        void Window.moveTo(int x, int y) { ParentForm.Left = x; ParentForm.Top = y; }
+        Window Window.open(string URL, string name, string specs, bool replace) { open(URL); return this; }
+        void Window.print() => throw new NotImplementedException();
+        string Window.prompt(string text, string defaultText) => throw new NotImplementedException();
+        object Window.requestAnimationFrame() => throw new NotImplementedException();
+        void Window.resizeBy(int width, int height) { ParentForm.Width += width; ParentForm.Height += height; }
+        void Window.resizeTo(int width, int height) { ParentForm.Width = width; ParentForm.Height = height; }
+        void Window.scrollBy(int xnum, int ynum) { HorizontalScroll.Value += xnum; VerticalScroll.Value += xnum; }
+        void Window.scrollTo(int xpos, int ypos) { HorizontalScroll.Value = xpos; VerticalScroll.Value = ypos; }
+        int Window.setInterval(string function, int milliseconds, params object[] args) => _windowHelper.setInterval(function, milliseconds, args);
+        int Window.setTimeout(string function, int milliseconds, params object[] args) => _windowHelper.setTimeout(function, milliseconds, args);
+        void Window.stop() => stop();
 
         #endregion
 

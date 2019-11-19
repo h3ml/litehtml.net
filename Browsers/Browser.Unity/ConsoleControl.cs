@@ -1,14 +1,14 @@
 using Litehtml;
 using Litehtml.Containers;
-using Litehtml.Script;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
+using Screen = Litehtml.Screen;
 
 namespace Browser.Unity
 {
-    public class ConsoleControl : container_unity, IWindow
+    public class ConsoleControl : container_unity, Window
     {
         readonly context _context = new context();
         document _doc;
@@ -17,67 +17,67 @@ namespace Browser.Unity
 
         #region Window
 
-        bool IWindow.closed => throw new System.NotImplementedException();
+        bool Window.closed => throw new System.NotImplementedException();
 
-        IConsole IWindow.console => throw new System.NotImplementedException();
+        Console Window.console => throw new System.NotImplementedException();
 
-        string IWindow.defaultStatus { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        string Window.defaultStatus { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-        IDocument IWindow.document => throw new System.NotImplementedException();
+        Document Window.document => throw new System.NotImplementedException();
 
-        IElement IWindow.frameElement => throw new System.NotImplementedException();
+        Element Window.frameElement => throw new System.NotImplementedException();
 
-        IList<IElement> IWindow.frames => throw new System.NotImplementedException();
+        IList<Element> Window.frames => throw new System.NotImplementedException();
 
-        IHistory IWindow.history => throw new System.NotImplementedException();
+        History Window.history => throw new System.NotImplementedException();
 
-        int IWindow.innerHeight => throw new System.NotImplementedException();
+        int Window.innerHeight => throw new System.NotImplementedException();
 
-        int IWindow.innerWidth => throw new System.NotImplementedException();
+        int Window.innerWidth => throw new System.NotImplementedException();
 
-        int IWindow.length => throw new System.NotImplementedException();
+        int Window.length => throw new System.NotImplementedException();
 
-        IStorage IWindow.localStorage => throw new System.NotImplementedException();
+        Storage Window.localStorage => throw new System.NotImplementedException();
 
-        ILocation IWindow.location => throw new System.NotImplementedException();
+        Location Window.location => throw new System.NotImplementedException();
 
-        string IWindow.name { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        string Window.name { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-        INavigator IWindow.navigator => throw new System.NotImplementedException();
+        Navigator Window.navigator => throw new System.NotImplementedException();
 
-        IWindow IWindow.opener => throw new System.NotImplementedException();
+        Window Window.opener => throw new System.NotImplementedException();
 
-        int IWindow.outerHeight => throw new System.NotImplementedException();
+        int Window.outerHeight => throw new System.NotImplementedException();
 
-        int IWindow.outerWidth => throw new System.NotImplementedException();
+        int Window.outerWidth => throw new System.NotImplementedException();
 
-        int IWindow.pageXOffset => throw new System.NotImplementedException();
+        int Window.pageXOffset => throw new System.NotImplementedException();
 
-        int IWindow.pageYOffset => throw new System.NotImplementedException();
+        int Window.pageYOffset => throw new System.NotImplementedException();
 
-        IWindow IWindow.parent => throw new System.NotImplementedException();
+        Window Window.parent => throw new System.NotImplementedException();
 
-        IScreen IWindow.screen => throw new System.NotImplementedException();
+        Screen Window.screen => throw new System.NotImplementedException();
 
-        int IWindow.screenLeft => throw new System.NotImplementedException();
+        int Window.screenLeft => throw new System.NotImplementedException();
 
-        int IWindow.screenTop => throw new System.NotImplementedException();
+        int Window.screenTop => throw new System.NotImplementedException();
 
-        int IWindow.screenX => throw new System.NotImplementedException();
+        int Window.screenX => throw new System.NotImplementedException();
 
-        int IWindow.screenY => throw new System.NotImplementedException();
+        int Window.screenY => throw new System.NotImplementedException();
 
-        IStorage IWindow.sessionStorage => throw new System.NotImplementedException();
+        Storage Window.sessionStorage => throw new System.NotImplementedException();
 
-        int IWindow.scrollX => throw new System.NotImplementedException();
+        int Window.scrollX => throw new System.NotImplementedException();
 
-        int IWindow.scrollY => throw new System.NotImplementedException();
+        int Window.scrollY => throw new System.NotImplementedException();
 
-        IWindow IWindow.self => throw new System.NotImplementedException();
+        Window Window.self => throw new System.NotImplementedException();
 
-        string IWindow.status { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        string Window.status { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-        IWindow IWindow.top => throw new System.NotImplementedException();
+        Window Window.top => throw new System.NotImplementedException();
 
         #endregion
 
@@ -124,7 +124,7 @@ namespace Browser.Unity
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Browser.Unity.console.console.html"))
             using (var reader = new StreamReader(stream))
                 html = reader.ReadToEnd();
-            _doc = document.createFromString(html, this, new EmptyScriptEngine(this), _context);
+            _doc = document.createFromString(html, this, new DefaultScriptEngine(this), _context);
             render_console((int)_size.x);
         }
 
@@ -168,127 +168,127 @@ namespace Browser.Unity
 
         #region Script
 
-        void IWindow.alert(string message)
+        void Window.alert(string message)
         {
             throw new System.NotImplementedException();
         }
 
-        string IWindow.atob(string encodedStr)
+        string Window.atob(string encodedStr)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.blur()
+        void Window.blur()
         {
             throw new System.NotImplementedException();
         }
 
-        string IWindow.btoa(string str)
+        string Window.btoa(string str)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.clearInterval(string var)
+        void Window.clearInterval(string var)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.clearTimeout(string id_of_settimeout)
+        void Window.clearTimeout(string id_of_settimeout)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.close()
+        void Window.close()
         {
             throw new System.NotImplementedException();
         }
 
-        bool IWindow.confirm(string message)
+        bool Window.confirm(string message)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.focus()
+        void Window.focus()
         {
             throw new System.NotImplementedException();
         }
 
-        IStyle IWindow.getComputedStyle(string element, string pseudoElement)
+        Style Window.getComputedStyle(string element, string pseudoElement)
         {
             throw new System.NotImplementedException();
         }
 
-        object IWindow.getSelection()
+        object Window.getSelection()
         {
             throw new System.NotImplementedException();
         }
 
-        MediaQueryList IWindow.matchMedia(string mediaQueryString)
+        MediaQueryList Window.matchMedia(string mediaQueryString)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.moveBy(int x, int y)
+        void Window.moveBy(int x, int y)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.moveTo(int x, int y)
+        void Window.moveTo(int x, int y)
         {
             throw new System.NotImplementedException();
         }
 
-        IWindow IWindow.open(string URL, string name, string specs, bool? replace)
+        Window Window.open(string URL, string name, string specs, bool replace)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.print()
+        void Window.print()
         {
             throw new System.NotImplementedException();
         }
 
-        string IWindow.prompt(string text, string defaultText)
+        string Window.prompt(string text, string defaultText)
         {
             throw new System.NotImplementedException();
         }
 
-        object IWindow.requestAnimationFrame()
+        object Window.requestAnimationFrame()
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.resizeBy(int width, int height)
+        void Window.resizeBy(int width, int height)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.resizeTo(int width, int height)
+        void Window.resizeTo(int width, int height)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.scrollBy(int xnum, int ynum)
+        void Window.scrollBy(int xnum, int ynum)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.scrollTo(int xpos, int ypos)
+        void Window.scrollTo(int xpos, int ypos)
         {
             throw new System.NotImplementedException();
         }
 
-        int IWindow.setInterval(string function, int milliseconds, params object[] args)
+        int Window.setInterval(string function, int milliseconds, params object[] args)
         {
             throw new System.NotImplementedException();
         }
 
-        int IWindow.setTimeout(string function, int milliseconds, params object[] args)
+        int Window.setTimeout(string function, int milliseconds, params object[] args)
         {
             throw new System.NotImplementedException();
         }
 
-        void IWindow.stop()
+        void Window.stop()
         {
             throw new System.NotImplementedException();
         }

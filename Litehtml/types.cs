@@ -36,7 +36,7 @@ namespace Litehtml
     }
 
     [DebuggerDisplay("position: {x},{y}:{width}x{height}")]
-    public partial struct position
+    public partial struct position : Rect
     {
         public int x;
         public int y;
@@ -44,6 +44,16 @@ namespace Litehtml
         public int width;
         public int height;
         public int depth; //:h3ml
+
+        public position(int x, int y, int width, int height)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = 0; //:h3ml
+            this.width = width;
+            this.height = height;
+            this.depth = 0; //:h3ml
+        }
 
         public position(int x, int y, int z, int width, int height, int depth)
         {
@@ -61,6 +71,16 @@ namespace Litehtml
         public int top => y;
         public int front => z; //:h3ml
         public int back => z + depth; //:h3ml
+
+        // Rect
+        //int Rect.left => left;
+        //int Rect.top => top;
+        //int Rect.right => right;
+        //int Rect.bottom => bottom;
+        int Rect.x => x;
+        int Rect.y => y;
+        int Rect.width => width;
+        int Rect.height => height;
 
         public static position operator +(position t, margins mg)
         {

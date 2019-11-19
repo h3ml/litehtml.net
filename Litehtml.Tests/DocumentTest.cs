@@ -3,8 +3,15 @@ using System.Collections.Generic;
 
 namespace Litehtml
 {
-    public class DocumentTest
+    public class documentTest
     {
+        [Test]
+        public void LayoutTest()
+        {
+            var doc = document.createFromString("<html>Body</html>", new container_test(), null, new context());
+            doc.render(500, render_type.all);
+        }
+
         [Test]
         public void AddFontTest()
         {
